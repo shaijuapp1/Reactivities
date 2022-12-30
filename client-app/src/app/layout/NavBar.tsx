@@ -4,8 +4,8 @@ import React from "react";
 interface Props {
     openForm: () => void;
 }
-// {openForm}: Props
-export default function NavBar() { 
+
+export default function NavBar({openForm}: Props) {
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -15,7 +15,7 @@ export default function NavBar() {
                 </Menu.Item>
                 <Menu.Item name='Activities' />
                 <Menu.Item>
-                    {/* <Button onClick={openForm} positive content='Create Activity' /> */}
+                    <Button onClick={openForm} positive content='Create Activity' />
                 </Menu.Item>
             </Container>
         </Menu>
