@@ -1,0 +1,12 @@
+dotnet ef migrations add IdentityAdded -p Persistence -s API
+
+ dotnet watch --no-hot-reload   
+
+ npm start
+
+
+==========
+Nuget pakeges:
+
+API:
+RefreshSystem.IdentityModel.Tokens.Jwt by Microsoft
