@@ -7,7 +7,7 @@ using Persistence;
 
 namespace API.Controllers
 {
-    public class TaskListsController : BaseApiController
+    public class ActionTaskController : BaseApiController
     {
         [HttpGet] 
         public async Task<ActionResult<List<ActionTask>>> GetActivities()

@@ -1,0 +1,7 @@
+const ActionTasks = {
+    list: () => requests.get<ActionTask[]>(`/ActionTask`),
+    details: (id: string) => requests.get<ActionTask>(`/ActionTask/${id}`),
+    create: (activity: ActionTask) => requests.post<void>(`/ActionTask`, activity),
+    update: (activity: ActionTask) => requests.put<void>(`/ActionTask/${activity.id}`, activity),
+    delete: (id: string) => requests.del<void>(`/ActionTask/${id}`)
+}
