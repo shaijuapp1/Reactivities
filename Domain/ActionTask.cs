@@ -7,5 +7,6 @@ namespace Domain
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime CompletedDate { get; set; }
+        public int Status { get; set; }
     }
 }
