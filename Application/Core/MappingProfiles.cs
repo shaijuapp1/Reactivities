@@ -1,5 +1,7 @@
 
 using Application.Activities;
+using Application.AppConfigs;
+using Application.AppConfigTypes;
 using AutoMapper;
 using Domain;
 
@@ -9,6 +11,12 @@ namespace Application.Core
     {
         public MappingProfiles()
         {
+            CreateMap<AppConfigType, AppConfigType>();
+            CreateMap<AppConfigType, AppConfigTypeDto>();
+
+             CreateMap<AppConfig, AppConfig>();
+            CreateMap<AppConfig, AppConfigDto>();
+
             CreateMap<Activity, Activity>();
             
             CreateMap<Activity, ActivityDto>()
@@ -20,6 +28,7 @@ namespace Application.Core
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.AppUser.Bio));
 
             CreateMap<ActionTask, ActionTask>();
+
 
         }
     }

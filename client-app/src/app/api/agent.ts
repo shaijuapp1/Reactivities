@@ -11,8 +11,12 @@ const sleep = (delay: number) => {
     })
 }
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL //process.env.REACT_APP_API_URL; //"http://localhost:5000/api" //process.env.REACT_APP_API_URL;
 
+try{
+    var vevUrl = process.env.REACT_APP_API_URL
+    console.log("process.env.REACT_APP_API_URL " + process.env.REACT_APP_API_URL)
+}catch{}
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 axios.interceptors.request.use(config => {
@@ -22,7 +26,7 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(async response => {
-    await sleep(1000);
+    if (process.env.NODE_ENV === 'development') await sleep(1000);
     return response;
 }, (error: AxiosError) => {
     const {data, status, config} = error.response as AxiosResponse;

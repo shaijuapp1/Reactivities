@@ -32,6 +32,9 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
@@ -88,6 +91,63 @@ namespace Persistence.Migrations
                     b.HasIndex("ActivityId");
 
                     b.ToTable("ActivityAttendees");
+                });
+
+            modelBuilder.Entity("Domain.AppConfig", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ConfigTypeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Det1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Det2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Det3")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Det4")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Det5")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Det6")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConfigTypeId");
+
+                    b.ToTable("AppConfigs");
+                });
+
+            modelBuilder.Entity("Domain.AppConfigType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppConfigTypes");
                 });
 
             modelBuilder.Entity("Domain.AppUser", b =>
@@ -158,6 +218,45 @@ namespace Persistence.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.TableField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TableNameId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TableNameId");
+
+                    b.ToTable("TableFields");
+                });
+
+            modelBuilder.Entity("Domain.TableName", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TableNames");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -305,6 +404,28 @@ namespace Persistence.Migrations
                     b.Navigation("Activity");
 
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("Domain.AppConfig", b =>
+                {
+                    b.HasOne("Domain.AppConfigType", "ConfigType")
+                        .WithMany()
+                        .HasForeignKey("ConfigTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ConfigType");
+                });
+
+            modelBuilder.Entity("Domain.TableField", b =>
+                {
+                    b.HasOne("Domain.TableName", "TableName")
+                        .WithMany()
+                        .HasForeignKey("TableNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TableName");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

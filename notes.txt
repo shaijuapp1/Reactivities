@@ -1,6 +1,22 @@
+url
+http://localhost:5000
+http://localhost:5000
+ 
+ ===============================
+ Debug:
+ ===============================
 
+ ===============================
+ 
  dotnet watch --no-hot-reload   
 
+docker run --name dev –e POSTGRES_USER=admin –e POSTGRES_PASSWORD=shiaju –p 5432:5432 -d postgres:latest
+docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=shiaju- p 5455:5432 -d postgres:latest -e POSTGRES_DB=postgresDB 
+
+
+'
+docker/getting-started –d postgres:latest 
+ 
  npm start
 
 
@@ -18,5 +34,4 @@ dotnet ef database drop  -p Persistence -s API
 DB migrations
 cd ..
 
-dotnet ef migrations add IdentityAdded -p Persistence -s API
-
+dotnet ef migrations add new -p Persistence -s API

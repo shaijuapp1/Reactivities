@@ -10,6 +10,12 @@ namespace Persistence
         {
         }
 
+        public DbSet<AppConfigType> AppConfigTypes { get; set; }
+        public DbSet<AppConfig> AppConfigs { get; set; }
+        public DbSet<TableName> TableNames { get; set; }
+        public DbSet<TableField> TableFields { get; set; }
+
+
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
         public DbSet<ActionTask> ActionTasks { get; set; }
@@ -18,6 +24,11 @@ namespace Persistence
         {
             base.OnModelCreating(builder);
 
+            //  builder.Entity<AppConfig>()
+            //     .HasOne(u => u.ConfigType);
+                
+            //builder.Entity<AppConfig>(x => x.HasKey(aa => new { aa.ConfigType }));
+            
             builder.Entity<ActivityAttendee>(x => x.HasKey(aa => new { aa.AppUserId, aa.ActivityId }));
 
             builder.Entity<ActivityAttendee>()
