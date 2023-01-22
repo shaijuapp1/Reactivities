@@ -14,7 +14,6 @@ docker run --name dev –e POSTGRES_USER=admin –e POSTGRES_PASSWORD=shiaju –
 docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=shiaju- p 5455:5432 -d postgres:latest -e POSTGRES_DB=postgresDB 
 
 
-'
 docker/getting-started –d postgres:latest 
  
  npm start
