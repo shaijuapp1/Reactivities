@@ -121,4 +121,13 @@ flyctl auth signup
 
 fly launch --image shaijukumar/reactivities:latest
 
+deploy from github
 
+flyctl deploy
+
+tom@test.com
+Pa$$w0rd
+
+===================
+
+npm run build
