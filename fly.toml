@@ -1,4 +1,4 @@
-# fly.toml file generated for shaiju1 on 2023-01-28T14:21:11+04:00
+# fly.toml file generated for shaiju1 on 2023-01-29T00:31:50+04:00
 
 app = "shaiju1"
 kill_signal = "SIGINT"
@@ -9,7 +9,7 @@ processes = []
   image = "shaijukumar/reactivities:latest"
 
 [env]
- ASPNETCORE_URLS="http://+:8080"
+  ASPNETCORE_URLS = "http://+:8080"
 
 [experimental]
   auto_rollback = true

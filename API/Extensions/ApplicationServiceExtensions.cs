@@ -45,7 +45,7 @@ namespace API.Extensions
                     connStr = config.GetConnectionString("DefaultConnection");
                 }
                 else
-                {
+                {                  
                     // Use connection string provided at runtime by Flyio.
                     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
@@ -67,7 +67,7 @@ namespace API.Extensions
                 // or from the environment variable from FlyIO, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
-            
+
 
 
             //fly.io
