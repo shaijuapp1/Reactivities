@@ -50,7 +50,7 @@ docker run --rm -it -p 8080:80 shaijukumar/reactivities
 
 docker login
 
-docker push shaijukumar/reactivities:latest
+c
 
 
 =============
@@ -82,3 +82,43 @@ Postgres cluster shaiju1-db is now attached to shaiju1
 ===========
 
 .github/workflows/docker-push.yml
+
+===================
+
+Username:    postgres
+  Password:    QqxnZ38Ip7Q3jDn
+  Hostname:    shaiju1-db.internal
+  Proxy port:  5432
+  Postgres port:  5433
+  Connection string: postgres://postgres:QqxnZ38Ip7Q3jDn@shaiju1-db.internal:5432
+
+Save your credentials in a secure place -- you won't be able to see them again!
+
+Connect to postgres
+Any app within the shaiju.app1@gmail.com organization can connect to this Postgres using the above connection string
+
+
+=============================
+//Create DB - run in command not in vs code
+docker run --name dev –e POSTGRES_USER=admin –e POSTGRES_PASSWORD=shiaju –p 5432:5432 -d postgres:latest
+
+
+docker container ls  
+
+//Create image
+docker build -t shaijukumar/reactivities .
+
+//run image local
+docker run --rm -it -p 8080:80 shaijukumar/reactivities 
+
+
+docker login
+
+docker push shaijukumar/reactivities:latest
+
+
+flyctl auth signup
+
+fly launch --image shaijukumar/reactivities:latest
+
+
