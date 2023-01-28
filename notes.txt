@@ -13,7 +13,7 @@ http://localhost:5000
 docker run --name dev –e POSTGRES_USER=admin –e POSTGRES_PASSWORD=shiaju –p 5432:5432 -d postgres:latest
 docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=shiaju- p 5455:5432 -d postgres:latest -e POSTGRES_DB=postgresDB 
 
-
+s
 docker/getting-started –d postgres:latest 
  
  npm start
@@ -34,3 +34,51 @@ DB migrations
 cd ..
 
 dotnet ef migrations add new -p Persistence -s API
+
+dotnet ef migrations add PostGress -p Persistence -s API
+
+======
+
+docker
+
+docker build -t shaijukumar/reactivities .
+docker push shaijukumar/reactivities:latest
+fly deploy
+
+docker run --rm -it -p 8080:80 shaijukumar/reactivities 
+
+
+docker login
+
+docker push shaijukumar/reactivities:latest
+
+
+=============
+fly.io
+============
+
+flyctl auth signup
+
+fly launch --image shaijukumar/reactivities:latest
+
+flyctl deploy
+
+fly secrets list
+fly secrets set TokenKey=vfqVrLtKKL47p25UWQgyb2LamPvJgbds
+
+Username:    postgres
+  Password:    LAFElYD4C6AXdA2
+  Hostname:    shaiju1-db.internal
+  Proxy port:  5432
+  Postgres port:  5433
+  Connection string: postgres://postgres:LAFElYD4C6AXdA2@shaiju1-db.internal:5432
+
+Now that you've set up Postgres, here's what you need to understand: https://fly.io/docs/postgres/getting-started/what-you-should-know/
+
+  The following secret was added to shaiju1:
+  DATABASE_URL=postgres://shaiju1:8LpbpS5JutFfEqy@top2.nearest.of.shaiju1-db.internal:5432/shaiju1?sslmode=disable
+Postgres cluster shaiju1-db is now attached to shaiju1
+
+===========
+
+.github/workflows/docker-push.yml
