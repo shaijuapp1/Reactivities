@@ -1,6 +1,6 @@
-# fly.toml file generated for shaiju1 on 2023-01-29T13:34:36+04:00
+# fly.toml file generated for virto on 2023-01-29T13:00:41+04:00
 
-app = "shaiju1"
+app = "virto"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -9,7 +9,6 @@ processes = []
   image = "shaijukumar/reactivities:latest"
 
 [env]
-  ASPNETCORE_URLS = "http://+:8080"
 
 [experimental]
   auto_rollback = true
