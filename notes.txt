@@ -105,23 +105,25 @@ docker run --name dev –e POSTGRES_USER=admin –e POSTGRES_PASSWORD=shiaju –
 
 docker container ls  
 
-//Create image
+//Create image in local docker
 docker build -t shaijukumar/reactivities .
 
 //run image local
 docker run --rm -it -p 8080:80 shaijukumar/reactivities 
 
-
+//login to dcker, first time
 docker login
 
+//push to server docker
 docker push shaijukumar/reactivities:latest
 
-
+//flyctl signup, first time
 flyctl auth signup
 
+..
 fly launch --image shaijukumar/reactivities:latest
 
-deploy from github
+//deploy from github
 
 flyctl deploy
 
