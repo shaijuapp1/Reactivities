@@ -1,6 +1,6 @@
-# fly.toml file generated for shaiju1 on 2023-01-29T00:31:50+04:00
+# fly.toml file generated for virto on 2023-01-29T12:01:47+04:00
 
-app = "shaiju1"
+app = "virto"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

@@ -66,18 +66,7 @@ flyctl deploy
 fly secrets list
 fly secrets set TokenKey=vfqVrLtKKL47p25UWQgyb2LamPvJgbds
 
-Username:    postgres
-  Password:    LAFElYD4C6AXdA2
-  Hostname:    shaiju1-db.internal
-  Proxy port:  5432
-  Postgres port:  5433
-  Connection string: postgres://postgres:LAFElYD4C6AXdA2@shaiju1-db.internal:5432
 
-Now that you've set up Postgres, here's what you need to understand: https://fly.io/docs/postgres/getting-started/what-you-should-know/
-
-  The following secret was added to shaiju1:
-  DATABASE_URL=postgres://shaiju1:8LpbpS5JutFfEqy@top2.nearest.of.shaiju1-db.internal:5432/shaiju1?sslmode=disable
-Postgres cluster shaiju1-db is now attached to shaiju1
 
 ===========
 
@@ -85,18 +74,20 @@ Postgres cluster shaiju1-db is now attached to shaiju1
 
 ===================
 
-Username:    postgres
-  Password:    QqxnZ38Ip7Q3jDn
-  Hostname:    shaiju1-db.internal
+Postgres cluster virto-db created
+  Username:    postgres
+  Password:    c4vxZGlhoJDTbK0
+  Hostname:    virto-db.internal
   Proxy port:  5432
   Postgres port:  5433
-  Connection string: postgres://postgres:QqxnZ38Ip7Q3jDn@shaiju1-db.internal:5432
+  Connection string: postgres://postgres:c4vxZGlhoJDTbK0@virto-db.internal:5432
 
 Save your credentials in a secure place -- you won't be able to see them again!
 
 Connect to postgres
 Any app within the shaiju.app1@gmail.com organization can connect to this Postgres using the above connection string
 
+Now that you've set up Postgres, here's what you need to understand: https://fly.io/docs/postgres/getting-started/what-you-should-know/
 
 =============================
 //Create DB - run in command not in vs code
@@ -111,17 +102,20 @@ docker build -t shaijukumar/reactivities .
 //run image local
 docker run --rm -it -p 8080:80 shaijukumar/reactivities 
 
-//login to dcker, first time
-docker login
+  //login to dcker, first time
+  docker login
 
-//push to server docker
-docker push shaijukumar/reactivities:latest
+  //push to docker server 
+  docker push shaijukumar/reactivities:latest
 
 //flyctl signup, first time
+//install flyctl
 flyctl auth signup
 
-..
-fly launch --image shaijukumar/reactivities:latest
+fly help
+
+  //fly launch 
+  fly launch --image shaijukumar/reactivities:latest
 
 //deploy from github
 
